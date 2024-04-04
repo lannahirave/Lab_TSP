@@ -34,13 +34,16 @@ def calculate_distance(city1, city2):
 
 def calculate_total_distance(cities, path):
     total_distance = 0
-    for i in range(len(path)):
-        total_distance += calculate_distance(cities[path[i]], cities[path[(i + 1) % len(path)]])
+    for i in range(len(path) - 1):
+        city1 = cities[path[i] - 1]
+        city2 = cities[path[i + 1] - 1]
+        total_distance += calculate_distance(city1, city2)
+    total_distance += calculate_distance(cities[path[-1] - 1], cities[path[0] - 1])
     return total_distance
 
 
 def generate_random_path(cities):
-    path = list(range(0, len(cities)))
+    path = list(range(1, len(cities)+1))
     shuffle(path)
     return path
 
