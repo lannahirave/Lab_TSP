@@ -40,8 +40,7 @@ def calculate_total_distance(cities, path):
 
 
 def generate_random_path(cities):
-    path = list(range(1, len(cities)))
+    path = list(range(0, len(cities)))
     shuffle(path)
-    path.insert(0, cities[0].name)
     return path
 
